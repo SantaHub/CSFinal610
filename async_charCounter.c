@@ -70,8 +70,9 @@ int main()
             printf("Number of %c is: %d \n", i, count[i] / thread_count);
     }
 
-    free(thread_handles);
     pthread_exit(NULL);
+    free(thread_handles);
+
     return 0;
 }
 
