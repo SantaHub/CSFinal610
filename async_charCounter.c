@@ -51,7 +51,7 @@ int main()
     for (long threadIndex = 0; threadIndex < thread_count; threadIndex++)
     {
         pthread_mutex_init(&mutex[threadIndex], NULL);
-        pthread_create(&thread_handles[threadIndex], NULL, task, &threadIndex);
+        pthread_create(&thread_handles[threadIndex], NULL, task, (void *)threadIndex);
     }
     printf("Thread created and running");
 
