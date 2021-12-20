@@ -26,7 +26,7 @@ int main()
 
     // prompt user to enter a line
     printf("Please enter a line not larger than 100 characters. \n");
-    gets(letters);
+    fgets(letters);
 
     // if length is less than
     int strLength = strlen(letters);
@@ -54,8 +54,7 @@ int main()
         pthread_mutex_destroy(&mutex[thread]);
     }
 
-
-    for (int i = 33; i < ASCIIs; i++) 
+    for (int i = 33; i < ASCIIs; i++)
         if (count[i] != 0)
             printf("Number of %c is: %d \n", i, count[i] / thread_count);
 
