@@ -15,7 +15,7 @@ int main(void)
     MPI_Reduce(&x, &sum, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
     if (my_rank == 0)
     {
-        printf("sum from reduce function");
+        printf("sum from reduce function= %d\n", sum);
     }
     MPI_Finalize();
     return 0;
