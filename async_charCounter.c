@@ -16,7 +16,7 @@ void *task(void *rank);
 int main()
 {
     pthread_t *thread_handles;
-    int i, thread;
+    int i;
 
     // Assign count by 0
     for (i = 0; i < ASCIIs; i++)
@@ -52,7 +52,7 @@ int main()
     for (long threadIndex = 0; threadIndex < thread_count; threadIndex++)
     {
         pthread_mutex_init(&mutex[threadIndex], NULL);
-        pthread_create(&thread_handles[threadIndex], NULL, task, 12);
+        pthread_create(&thread_handles[threadIndex], NULL, task, &threadIndex);
     }
     printf("Thread created and running");
 
