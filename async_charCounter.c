@@ -52,11 +52,7 @@ int main()
     {
         pthread_mutex_init(&mutex[threadIndex], NULL);
         pthread_create(&thread_handles[threadIndex], NULL, task, (void *)threadIndex);
-    }
-    printf("Thread created and running");
 
-    for (long threadIndex = 0; threadIndex < thread_count; threadIndex++)
-    {
         pthread_join(thread_handles[threadIndex], NULL);
         pthread_mutex_destroy(&mutex[threadIndex]);
     }
