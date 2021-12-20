@@ -65,10 +65,12 @@ int main()
     printf("Threads joined and destroyed");
 
     for (int i = 33; i < ASCIIs; i++)
+    {
         if (count[i] != 0)
             printf("Number of %c is: %d \n", i, count[i] / thread_count);
+    }
 
-    free(&thread_handles);
+    free(thread_handles);
     pthread_exit(NULL);
     return 0;
 }
