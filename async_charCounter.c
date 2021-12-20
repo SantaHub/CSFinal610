@@ -23,14 +23,13 @@ int main()
     {
         count[i] = 0;
     }
-    printf("Thread created");
 
     // prompt user to enter a line
     printf("Please enter a line not larger than 100 characters. \n");
     fgets(stringInput, 100, stdin);
     printf("Thread creating");
 
-    // if length is less than
+    // if length is less than process, add more space to string to match thread count divisor.
     int stringLength = strlen(stringInput);
     if (stringLength % thread_count != 0)
     {
@@ -70,8 +69,8 @@ int main()
             printf("Number of %c is: %d \n", i, count[i] / thread_count);
     }
 
+    // free(thread_handles);
     pthread_exit(NULL);
-    free(thread_handles);
 
     return 0;
 }
