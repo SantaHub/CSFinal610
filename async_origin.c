@@ -27,6 +27,7 @@ int main()
     // prompt user to enter a line
     printf("Please enter a line not larger than 100 characters. \n");
     fgets(letters, 100, stdin);
+    printf("Going to create threads");
 
     // if length is less than
     int strLength = strlen(letters);
