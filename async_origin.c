@@ -7,8 +7,7 @@
 #define ASCIIs 127
 #define atmost 1000
 
-char letters[atmost + 1] = malloc(atmost + 1);
-;
+char letters[atmost + 1];
 int count[ASCIIs], h;
 pthread_mutex_t mutex[ASCIIs];
 
