@@ -5,7 +5,7 @@
 
 #define thread_count 10
 #define ASCIIs 127
-#define atmost 1000
+#define atmost 3
 
 char letters[atmost + 1];
 int count[ASCIIs], h;
