@@ -5,9 +5,9 @@
 
 #define thread_count 10
 #define ASCIIs 127
-#define atmost 3
+#define atmost 100
 
-char letters[atmost + 1];
+char letters[atmost];
 int count[ASCIIs], h;
 pthread_mutex_t mutex[ASCIIs];
 
@@ -29,7 +29,7 @@ int main()
     printf("Please enter a line not larger than 100 characters. \n");
     getchar();
     fgets(input, 12, stdin);
-    fgets(letters, 100, stdin);
+    // fgets(letters, 100, stdin);
     printf("Going to create threads");
 
     // if length is less than
