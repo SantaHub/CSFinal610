@@ -26,11 +26,7 @@ int main()
     }
 
     // prompt user to enter a line
-    printf("Please enter a line not larger than 100 characters. \n");
-    getchar();
-    gets(letters);
-    // fgets(letters, 100, stdin);
-    printf("Going to create threads");
+    letters = getUserInput(atmost);
 
     // if length is less than
     int strLength = strlen(letters);
@@ -65,6 +61,15 @@ int main()
 
     free(thread_handles);
     return 0;
+}
+
+char[] getUserInput(int inputSize)
+{
+    printf("Please enter a line not larger than 100 characters. \n");
+    char input[inputSize];
+    scanf("%s", input);
+
+    return input;
 }
 
 void *task(void *rank)
