@@ -17,6 +17,7 @@ int main()
 {
     pthread_t *thread_handles;
     int i;
+    char input[12];
 
     // Assign count by 0
     for (i = 0; i < ASCIIs; i++)
@@ -27,6 +28,7 @@ int main()
     // prompt user to enter a line
     printf("Please enter a line not larger than 100 characters. \n");
     getchar();
+    fgets(input, 12, stdin);
     fgets(letters, 100, stdin);
     printf("Going to create threads");
 
