@@ -16,7 +16,7 @@ void *task(void *rank);
 int main()
 {
     pthread_t *thread_handles;
-    int i, thread;
+    int i;
 
     // Assign count by 0
     for (i = 0; i < ASCIIs; i++)
@@ -65,7 +65,6 @@ int main()
 
 void *task(void *rank)
 {
-    int my_rank = (long)rank;
 
     pthread_mutex_lock(mutex);
     for (int i = 0; i < strlen(letters); i++)
