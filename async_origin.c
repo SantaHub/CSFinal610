@@ -42,9 +42,9 @@ int main()
     }
 
     h = strlen(letters) / thread_count;
+    printf("Going to create threads");
 
     thread_handles = malloc(h * sizeof(pthread_t));
-    printf("Going to create threads");
     /* Creating the threads */
     for (long thread = 0; thread < thread_count; thread++)
     {
