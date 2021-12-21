@@ -7,7 +7,7 @@
 #define ASCIIs 127
 #define atmost 1000
 
-char letters[atmost + 1] = malloc(atmost + 1);
+char letters[atmost + 1];
 int count[ASCIIs], h;
 pthread_mutex_t mutex[ASCIIs];
 
@@ -26,7 +26,7 @@ int main()
 
     // prompt user to enter a line
     printf("Please enter a line not larger than 100 characters. \n");
-    fgets(letters, 100, stdin);
+    scanf("%s", letters);
     printf("Going to create threads");
 
     // if length is less than
