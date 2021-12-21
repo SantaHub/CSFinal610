@@ -7,7 +7,6 @@
 #define ASCIIs 127
 #define atmost 1000
 
-char letters[atmost + 1];
 int count[ASCIIs], h;
 pthread_mutex_t mutex[ASCIIs];
 
@@ -17,6 +16,7 @@ int main()
 {
     pthread_t *thread_handles;
     int i;
+    char letters[atmost + 1];
 
     // Assign count by 0
     for (i = 0; i < ASCIIs; i++)
