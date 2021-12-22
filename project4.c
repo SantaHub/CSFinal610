@@ -23,7 +23,7 @@ int main()
     }
 
     printf("Enter a line not larger than 100 characters.\n");
-    gets(letters);
+    fgets(letters, atmost, stdin);
 
     int len, append;
 
