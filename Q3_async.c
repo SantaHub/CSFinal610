@@ -21,15 +21,12 @@ int main()
     n = strlen(letters);
     for (i = 0; i < ASCIIs; i++)
         total_count[i] = 0;
-    #pragma omp parallel num_threads(thread_count)
-      {
-         //Compelete This part.
-         find(total_count, start, end);
-      }
-
+#pragma omp parallel num_threads(thread_count)
+    find(total_count, start, end);
 
     for (i = 33; i < ASCIIs; i++)
     {
+        printf("am printing the frequence of : " + i);
         if (total_count[i] != 0)
             printf("Number of %c is: %d\n", i, total_count[i]);
     }
