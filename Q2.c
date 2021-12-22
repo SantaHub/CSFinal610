@@ -21,6 +21,17 @@ void Print(int x[], int n)
     printf("\n--------------------------------\n");
 }
 
+int findIndexOfSmallest(int a[], int n, int from)
+{
+    int indexOfSmallest = from;
+    int i;
+
+    for (i = from; i < n; i++)
+        if (a[i] < a[indexOfSmallest])
+            indexOfSmallest = i;
+    return indexOfSmallest;
+}
+
 //Sorting the Arrays
 
 void Sort(int x[])
@@ -33,17 +44,6 @@ void Sort(int x[])
         x[i] = x[indexOfSmallest];
         x[indexOfSmallest] = t;
     }
-}
-
-int findIndexOfSmallest(int a[], int n, int from)
-{
-    int indexOfSmallest = from;
-    int i;
-
-    for (i = from; i < n; i++)
-        if (a[i] < a[indexOfSmallest])
-            indexOfSmallest = i;
-    return indexOfSmallest;
 }
 
 void finalMerge(int a[], int b[], int d[], int n)
