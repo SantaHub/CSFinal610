@@ -15,8 +15,7 @@ void *task(void *rank);
 int main()
 {
     pthread_t *thread_handles;
-    int i;
-    long thread;
+    int i, thread;
     for (i = 0; i < ASCIIs; i++)
     {
         count[i] = 0;
@@ -25,17 +24,17 @@ int main()
     printf("Enter a line not larger than 100 characters.\n");
     fgets(letters, atmost, stdin);
 
-    int len, append;
+    int length, lengthMoreNeeded;
 
-    len = strlen(letters);
-    append = len % thread_count;
+    length = strlen(letters);
+    lengthMoreNeeded = length % thread_count;
 
-    if (append != 0)
+    if (lengthMoreNeeded != 0)
     {
-        append = thread_count - append;
+        lengthMoreNeeded = thread_count - lengthMoreNeeded;
     }
 
-    for (i = 0; i < append; i++)
+    for (i = 0; i < lengthMoreNeeded; i++)
     {
         strcat(letters, " ");
     }
@@ -63,13 +62,13 @@ int main()
         pthread_mutex_destroy(&mutex[i]);
     }
 
-    free(thread_handles);
-
     for (i = 33; i < ASCIIs; i++)
     {
         if (count[i] != 0)
             printf("Number of %c is: %d\n", i, count[i]);
     }
+
+    free(thread_handles);
     return 0;
 }
 
