@@ -58,7 +58,7 @@ void find(int count[], int start, int end)
     for (i = start; i < end; i++)
     {
         if (count[i] != 0)
-            printf("Number of %c is: %d ", i, count[i]);
+            printf("Test _ Number of %c is: %d ", i, count[i]);
     }
 }
 
