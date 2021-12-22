@@ -15,7 +15,8 @@ void *task(void *rank);
 int main()
 {
     pthread_t *thread_handles;
-    int i, thread;
+    int i;
+    long thread;
     for (i = 0; i < ASCIIs; i++)
     {
         count[i] = 0;
@@ -74,7 +75,7 @@ int main()
 
 void *task(void *rank)
 {
-    int newRank = (int)rank;
+    int newRank = (long)rank;
     int strt = newRank * h;
     int end = strt + h;
     int i, index;
