@@ -55,4 +55,5 @@ void find(int count[], int start, int end)
         count[(int)letters[i]]++;
 }
 
-// gcc -fopenmp Q3_async.
+// gcc -fopenmp Q3_async.c
+// Please enter more characters than thread count.
