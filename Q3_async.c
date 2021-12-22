@@ -41,9 +41,8 @@ int main()
     for (i = 33; i < ASCIIs; i++)
     {
         int frequency = total_count[i];
-        printf("frequency counting");
         if (total_count[i] != 0)
-            printf("Number of %c is: %d ", i, frequency);
+            printf("Number of %c is: %d \n ", i, frequency);
     }
     return 0;
 }
@@ -54,12 +53,6 @@ void find(int count[], int start, int end)
         count[i] = 0;
     for (i = start; i < end; i++)
         count[(int)letters[i]]++;
-
-    for (i = start; i < end; i++)
-    {
-        if (count[i] != 0)
-            printf("Test _ Number of %c is: %d ", i, count[i]);
-    }
 }
 
 // gcc -fopenmp Q3_async.
