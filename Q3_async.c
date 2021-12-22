@@ -26,7 +26,7 @@ int main()
 
     for (i = 33; i < ASCIIs; i++)
     {
-        printf("am printing the frequence of : %i", i);
+        printf("am printing the frequence of : %i \n", i);
         if (total_count[i] != 0)
             printf("Number of %c is: %d\n", i, total_count[i]);
     }
@@ -40,3 +40,5 @@ void find(int count[], int start, int end)
     for (i = start; i < end; i++)
         count[(int)letters[i]]++;
 }
+
+// gcc -fopenmp Q3_async.
