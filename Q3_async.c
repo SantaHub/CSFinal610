@@ -40,9 +40,9 @@ int main()
 
     for (i = 33; i < ASCIIs; i++)
     {
-        printf("am printing the frequence of : %i , with count %i \n", i, thread_count[i]);
+        int frequency = total_count[i];
         if (total_count[i] != 0)
-            printf("Number of %c is: %d\n", i, total_count[i]);
+            printf("Number of %c is: %d ", i, frequency);
     }
     return 0;
 }
