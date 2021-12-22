@@ -90,4 +90,4 @@ void *task(void *rank)
     return NULL;
 }
 
-// Compile : gcc -g -Wall -lpthread
+// Compile : gcc -g -Wall fileName.c -lpthread

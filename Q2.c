@@ -110,3 +110,5 @@ int main()
     free(thread);
     return 0;
 }
+
+// compile : gcc -g -Wall fileName.c -lpthread
