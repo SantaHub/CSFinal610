@@ -74,7 +74,7 @@ int main()
 
 void *task(void *rank)
 {
-    int newRank = (long)rank;
+    int newRank = (int)rank;
     int strt = newRank * h;
     int end = strt + h;
     int i, index;
