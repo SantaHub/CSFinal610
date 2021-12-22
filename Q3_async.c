@@ -23,10 +23,10 @@ int main()
     for (i = 0; i < ASCIIs; i++)
         total_count[i] = 0;
 
-    double start = omp_get_wtime();
+    double startTime = omp_get_wtime();
 
-#pragma omp parallel num_threads(thread_count) for reduction(+ \
-                                                             : frequency)
+#pragma omp parallel for reduction(+ \
+                                   : frequency) num_threads(thread_count)
     for (p = 0; p < thread_count; p++)
     {
         my_rank = p;
@@ -37,8 +37,8 @@ int main()
         for (i = 0; i <= ASCIIs; i++)
             total_count[i] += count[i];
     }
-    double end = omp_get_wtime();
-    printf("Time required = %lf \n", end - start);
+    double endTime = omp_get_wtime();
+    printf("Time required = %lf \n", endTime - startTime);
     for (i = 33; i < ASCIIs; i++)
     {
         printf("am printing the frequence of : %i , with count %i \n", i, thread_count[i]);
