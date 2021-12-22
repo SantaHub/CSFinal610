@@ -20,3 +20,5 @@ int main(void)
     MPI_Finalize();
     return 0;
 }
+// Compile : mpicc -g -Wall fileName.c
+// Execute with n(11) process : mpiexec -n 11 ./a.out
