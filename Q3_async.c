@@ -25,7 +25,7 @@ int main()
 
     double startTime = omp_get_wtime();
 
-#pragma omp parallel num_threads(thread_count) {
+#pragma omp parallel num_threads(thread_count)
     {
         my_rank = p;
         segment = n / thread_count;
