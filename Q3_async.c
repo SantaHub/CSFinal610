@@ -12,6 +12,7 @@ void find(int count[], int start, int end);
 int main()
 {
     int i, thread_count, n, start, end;
+    int count[ASCIIs], my_rank, segment, p;
     printf("Enter a line not larger than 1000 characters.\n");
     fgets(letters, atmost, stdin);
     printf("How many threads?: ");
@@ -21,12 +22,26 @@ int main()
     n = strlen(letters);
     for (i = 0; i < ASCIIs; i++)
         total_count[i] = 0;
-#pragma omp parallel num_threads(thread_count)
-    find(total_count, start, end);
 
+    double start = omp_get_wtime();
+
+#pragma omp parallel num_threads(thread_count) for reduction(+ \
+                                                             : frequency)
+    for (p = 0; p < thread_count; p++)
+    {
+        my_rank = p;
+        segment = n / thread_count;
+        start = my_rank * segment;
+        end = start + segment;
+        find(count, start, end);
+        for (i = 0; i <= ASCIIs; i++)
+            total_count[i] += count[i];
+    }
+    double end = omp_get_wtime();
+    printf("Time required = %lf \n", end - start);
     for (i = 33; i < ASCIIs; i++)
     {
-        printf("am printing the frequence of : %i \n", i);
+        printf("am printing the frequence of : %i , with count %i \n", i, thread_count[i]);
         if (total_count[i] != 0)
             printf("Number of %c is: %d\n", i, total_count[i]);
     }
