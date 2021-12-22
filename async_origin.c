@@ -5,19 +5,18 @@
 
 #define thread_count 10
 #define ASCIIs 127
-#define atmost 100
+#define atmost 1000
 
-char letters[atmost];
+char letters[atmost + 1];
 int count[ASCIIs], h;
 pthread_mutex_t mutex[ASCIIs];
 
-void *task(void *rank);
+void* task(void* rank);
 
 int main()
 {
-    pthread_t *thread_handles;
-    int i;
-    char input[12];
+    pthread_t* thread_handles;
+    int i, thread;
 
     // Assign count by 0
     for (i = 0; i < ASCIIs; i++)
@@ -26,7 +25,8 @@ int main()
     }
 
     // prompt user to enter a line
-    letters = getUserInput(atmost);
+    printf("Please enter a line not larger than 100 characters. \n");
+    gets(letters);
 
     // if length is less than
     int strLength = strlen(letters);
@@ -42,38 +42,31 @@ int main()
     }
 
     h = strlen(letters) / thread_count;
-    printf("Going to create threads");
 
     thread_handles = malloc(h * sizeof(pthread_t));
+
     /* Creating the threads */
     for (long thread = 0; thread < thread_count; thread++)
     {
         pthread_mutex_init(&mutex[thread], NULL);
-        pthread_create(&thread_handles[thread], NULL, task, (void *)thread);
+        pthread_create(&thread_handles[thread], NULL, task, (void*)thread);
         pthread_join(thread_handles[thread], NULL);
         pthread_mutex_destroy(&mutex[thread]);
     }
 
+
     for (int i = 33; i < ASCIIs; i++)
         if (count[i] != 0)
             printf("Number of %c is: %d \n", i, count[i] / thread_count);
-    pthread_exit(NULL);
 
     free(thread_handles);
+    pthread_exit(NULL);
     return 0;
 }
 
-char[] getUserInput(int inputSize)
+void* task(void* rank)
 {
-    printf("Please enter a line not larger than 100 characters. \n");
-    char input[inputSize];
-    scanf("%s", input);
-
-    return input;
-}
-
-void *task(void *rank)
-{
+    int my_rank = (long)rank;
 
     pthread_mutex_lock(mutex);
     for (int i = 0; i < strlen(letters); i++)
