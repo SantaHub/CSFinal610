@@ -26,7 +26,6 @@ int main()
     double startTime = omp_get_wtime();
 
 #pragma omp parallel num_threads(thread_count) {
-    for (p = 0; p < thread_count; p++)
     {
         my_rank = p;
         segment = n / thread_count;
@@ -38,14 +37,14 @@ int main()
     }
     double endTime = omp_get_wtime();
     printf("Time required = %lf \n", endTime - startTime);
-}
-for (i = 33; i < ASCIIs; i++)
-{
-    printf("am printing the frequence of : %i , with count %i \n", i, thread_count[i]);
-    if (total_count[i] != 0)
-        printf("Number of %c is: %d\n", i, total_count[i]);
-}
-return 0;
+
+    for (i = 33; i < ASCIIs; i++)
+    {
+        printf("am printing the frequence of : %i , with count %i \n", i, thread_count[i]);
+        if (total_count[i] != 0)
+            printf("Number of %c is: %d\n", i, total_count[i]);
+    }
+    return 0;
 }
 void find(int count[], int start, int end)
 {
