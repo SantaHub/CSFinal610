@@ -128,7 +128,7 @@ int main()
     Print(b, n);
     printf("Array: c\n");
     Print(c, n);
-    //mergeTwo(a,b,n)
+    mergeTwo(a, b, n);
     finalMerge(a, b, c, n);
     return 0;
     free(thread);
