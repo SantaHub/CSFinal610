@@ -34,8 +34,9 @@ int findIndexOfSmallest(int a[], int n, int from)
 
 //Sorting the Arrays
 
-void *Sort(int x[])
+void *Sort(void *input)
 {
+    int x[] = (int[])input;
     int i, indexOfSmallest, t;
     for (i = 0; i < n; i++)
     {
