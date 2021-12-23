@@ -115,6 +115,7 @@ int main()
     pthread_join(thread[1], NULL);
     pthread_mutex_destroy(&mutex[0]);
     pthread_mutex_destroy(&mutex[1]);
+
     printf("e) Used Pthread to sort arrays");
     printf("Printing Array a : ");
     Print(a, n);
@@ -128,7 +129,7 @@ int main()
     Print(b, n);
     printf("Array: c\n");
     Print(c, n);
-    mergeTwo(a, b, n);
+    // mergeTwo(a, b, n);
     finalMerge(a, b, c, n);
     return 0;
     free(thread);
