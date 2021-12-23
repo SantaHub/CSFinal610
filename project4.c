@@ -9,7 +9,8 @@
 
 char letters[atmost + 1]; //extra location for '\0'. atmost must be divisible by thread_count
 int count[ASCIIs], h;     //h holds the length of the segment
-pthread_mutex_t mutex[ASCIIs];
+pthread_mutex_t mutemutex
+x[ASCIIs];
 void *task(void *rank);
 
 int main()

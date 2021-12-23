@@ -34,7 +34,7 @@ int findIndexOfSmallest(int a[], int n, int from)
 
 //Sorting the Arrays
 
-void Sort(int x[])
+void *Sort(int x[])
 {
     int i, indexOfSmallest, t;
     for (i = 0; i < n; i++)
@@ -102,6 +102,7 @@ int main()
 
     pthread_t *thread;
     thread = malloc(2 * sizeof(pthread_t));
+    pthread_mutex_t mutex[2];
 
     pthread_mutex_init(&mutex[0], NULL);
     pthread_create(&thread[0], NULL, Sort, a);
@@ -109,8 +110,8 @@ int main()
     pthread_mutex_init(&mutex[1], NULL);
     pthread_create(&thread[1], NULL, Sort, b);
 
-    pthread_join(thread_handles[0], NULL);
-    pthread_join(thread_handles[1], NULL);
+    pthread_join(thread[0], NULL);
+    pthread_join(thread[1], NULL);
     pthread_mutex_destroy(&mutex[0]);
     pthread_mutex_destroy(&mutex[1]);
     printf("e) Used Pthread to sort arrays");
