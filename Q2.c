@@ -48,35 +48,18 @@ void *Sort(void *input)
     return NULL;
 }
 
-void finalMerge(int a[], int b[], int d[], int n)
+void Merge(int a[], int b[], int c[], int n)
 {
-
-    int j = n;
-    int k = n;
-    int l = j + k;
-    int c[j + k];
-    int e[j + k + n];
-
-    for (int i = 0; i < j + k; i++)
-    {
-        if (i < j)
-            c[i] = a[i];
+    int aIndex = 0, bIndex = 0, cIndex = 0;
+    while (aIndex < n && bIndex < n)
+        if (a[aIndex] < b[bIndex])
+            c[cIndex++] = a[aIndex++];
         else
-            c[i] = b[i - j];
-    }
-
-    for (int i = 0; i < l + n; i++)
-    {
-        if (i < l)
-            e[i] = c[i];
-        else
-            e[i] = d[i - l];
-    }
-    printf("Merged array is :\n");
-    for (int i = 0; i < l + n; i++)
-    {
-        printf("c[%d]=%d\n", i, e[i]);
-    }
+            c[cIndex++] = b[bIndex++];
+    while (aIndex < n)
+        c[cIndex++] = a[aIndex++];
+    while (bIndex < n)
+        c[cIndex++] = b[bIndex++];
 }
 
 int main()
@@ -89,14 +72,14 @@ int main()
 
     a = (int *)malloc(n * sizeof(int));
     b = (int *)malloc(n * sizeof(int));
-    printf("b) Created two arrays a and b with size %d", n);
+    printf("b) Created two arrays a and b with size %d \n", n);
 
     c = (int *)malloc(2 * n * sizeof(int));
-    printf("c) Created array C with size 2 * %d", n);
+    printf("c) Created array C with size 2 * %d \n", n);
 
     Fill(a, n);
     Fill(b, n);
-    printf("d) Filled the arrays with random number of range 0 to 99");
+    printf("d) Filled the arrays with random number of range 0 to 99 \n");
     printf("Printing Array a : ");
     Print(a, n);
     printf("Printing Array b : ");
@@ -117,7 +100,7 @@ int main()
     pthread_mutex_destroy(&mutex[0]);
     pthread_mutex_destroy(&mutex[1]);
 
-    printf("e) Used Pthread to sort arrays");
+    printf("e) Used Pthread to sort  \n");
     printf("Printing Array a : ");
     Print(a, n);
     printf("Printing Array b : ");
@@ -126,13 +109,11 @@ int main()
     //You need to create two threads, pass the function: Sort.
     //The argument of Sort is an array.
     // Call join for both threads.
-    printf("Array: b after sorting\n");
-    Print(b, n);
     printf("Array: c\n");
-    Print(c, n);
-    // mergeTwo(a, b, n);
-    finalMerge(a, b, c, n);
-    return 0;
+    Merge(a, b, c, n);
+    printf("Array: c\n");
+    Print(c, 2 * n);
+
     free(thread);
     return 0;
 }
