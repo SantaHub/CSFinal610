@@ -6,7 +6,7 @@
 int *a, *b, *c;
 int n;
 
-// Filling the Arrays
+// Filling the Arrays.
 void Fill(int x[], int n)
 {
     for (int i = 0; i < n; i++)
@@ -94,17 +94,34 @@ int main()
 
     Fill(a, n);
     Fill(b, n);
-    Fill(c, n);
+    printf("d) Filled the arrays with random number of range 0 to 99");
+    printf("Printing Array a : ");
+    Print(a, n);
+    printf("Printing Array b : ");
+    Print(b, n);
+
     pthread_t *thread;
     thread = malloc(2 * sizeof(pthread_t));
+
+    pthread_mutex_init(&mutex[0], NULL);
+    pthread_create(&thread[0], NULL, Sort, a);
+
+    pthread_mutex_init(&mutex[1], NULL);
+    pthread_create(&thread[1], NULL, Sort, b);
+
+    pthread_join(thread_handles[0], NULL);
+    pthread_join(thread_handles[1], NULL);
+    pthread_mutex_destroy(&mutex[0]);
+    pthread_mutex_destroy(&mutex[1]);
+    printf("e) Used Pthread to sort arrays");
+    printf("Printing Array a : ");
+    Print(a, n);
+    printf("Printing Array b : ");
+    Print(b, n);
 
     //You need to create two threads, pass the function: Sort.
     //The argument of Sort is an array.
     // Call join for both threads.
-    Sort(a);
-    printf("b) creating array \n");
-    Print(a, n);
-    Sort(b);
     printf("Array: b after sorting\n");
     Print(b, n);
     printf("Array: c\n");
