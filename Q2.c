@@ -109,7 +109,6 @@ int main()
     //You need to create two threads, pass the function: Sort.
     //The argument of Sort is an array.
     // Call join for both threads.
-    printf("Array: c\n");
     Merge(a, b, c, n);
     printf("Array: c\n");
     Print(c, 2 * n);
