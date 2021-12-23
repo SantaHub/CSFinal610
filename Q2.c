@@ -83,10 +83,15 @@ int main()
     srand(time(NULL));
     // generating a random number for n
     n = rand() % 10;
+    printf("a) Generating Random integer : %d \n", n);
 
     a = (int *)malloc(n * sizeof(int));
     b = (int *)malloc(n * sizeof(int));
+    printf("b) Created two arrays a and b with size %d", n);
+
     c = (int *)malloc(2 * n * sizeof(int));
+    printf("c) Created array C with size 2 * %d", n);
+
     Fill(a, n);
     Fill(b, n);
     Fill(c, n);
@@ -97,7 +102,7 @@ int main()
     //The argument of Sort is an array.
     // Call join for both threads.
     Sort(a);
-    printf("Array: a after sorting\n");
+    printf("b) creating array \n");
     Print(a, n);
     Sort(b);
     printf("Array: b after sorting\n");
