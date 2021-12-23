@@ -36,7 +36,7 @@ int findIndexOfSmallest(int a[], int n, int from)
 
 void *Sort(void *input)
 {
-    int x[] = (int[])input;
+    int x[] = (int[]){input};
     int i, indexOfSmallest, t;
     for (i = 0; i < n; i++)
     {
