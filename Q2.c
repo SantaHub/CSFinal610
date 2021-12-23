@@ -45,6 +45,7 @@ void *Sort(void *input)
         x[i] = x[indexOfSmallest];
         x[indexOfSmallest] = t;
     }
+    return NULL;
 }
 
 void finalMerge(int a[], int b[], int d[], int n)
